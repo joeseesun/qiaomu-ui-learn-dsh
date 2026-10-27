@@ -56,3 +56,11 @@ test('original style comparison opens the related style and all specimen frames 
  const dom=environment();initI18n('zh');const plugin=createLearningController({save:async({data})=>({revision:1,data})},{revision:0,data:{}});
  try{const style=learn.styles.find(s=>s.confusedWith&&learn.styles.some(other=>other.slug===s.confusedWith.slug));const dialog=new LearnStyleModal(plugin,style);dialog.open();await Promise.resolve();const frame=document.querySelector('iframe');assert.equal(frame.getAttribute('sandbox'),'allow-scripts');document.querySelector('.qpg-confused-card').click();await Promise.resolve();const other=learn.styles.find(s=>s.slug===style.confusedWith.slug);assert.ok(document.querySelector('.qpg-learn-title').textContent.includes(other.name));}finally{disposeSurfaces();dom.window.close();}
 });
+
+test('native panel follows host language and persists an explicit language selection',async()=>{
+ const dom=environment();const {createRoot}=await import('react-dom/client');const React=await import('react');const {App}=await import('../src/native-app.jsx');globalThis.IS_REACT_ACT_ENVIRONMENT=true;
+ let data={},revision=0;const api={load:async()=>({revision,data}),save:async request=>{data=structuredClone(request.data);return {revision:++revision,data};}};const root=createRoot(document.querySelector('main'));
+ try{await React.act(async()=>{root.render(React.createElement(App,{api,hostLanguage:'zh'}));await new Promise(setImmediate);});assert.equal(document.querySelector('select[aria-label="Language"]').value,'zh');
+ await React.act(async()=>{const select=document.querySelector('select[aria-label="Language"]');select.value='en';select.dispatchEvent(new dom.window.Event('change',{bubbles:true}));await new Promise(setImmediate);});assert.equal(data.language,'en');assert.equal(document.querySelector('select[aria-label="Language"]').value,'en');
+ }finally{await React.act(async()=>root.unmount());disposeSurfaces();dom.window.close();globalThis.IS_REACT_ACT_ENVIRONMENT=false;}
+});

@@ -51127,7 +51127,7 @@ function createLearningController(api, saved, onStatus = () => {
   const controller = {
     api,
     settings: normalizeState(saved.data, all),
-    manifest: { id: "qiaomu-ui-learn-dsh", name: "Qiaomu UI Learn", version: "0.1.0", author: "\u5411\u9633\u4E54\u6728" },
+    manifest: { id: "qiaomu-ui-learn-dsh", name: "Qiaomu UI Learn", version: "0.1.1", author: "\u5411\u9633\u4E54\u6728" },
     app: {},
     catalog: catalog_default,
     flatItems: flat,
@@ -51337,9 +51337,9 @@ function openSettings(plugin, onReload) {
   };
   dialog.open();
 }
-function App4({ api, actions }) {
+function App4({ api, actions, hostLanguage = "zh" }) {
   const root = (0, import_react4.useRef)(null), closing = (0, import_react4.useRef)(Promise.resolve());
-  const [lang2, setLang] = (0, import_react4.useState)(() => navigator.language.startsWith("zh") ? "zh" : "en"), [error, setError] = (0, import_react4.useState)(""), [epoch, setEpoch] = (0, import_react4.useState)(0);
+  const [lang2, setLang] = (0, import_react4.useState)(() => hostLanguage === "en" ? "en" : "zh"), [error, setError] = (0, import_react4.useState)(""), [epoch, setEpoch] = (0, import_react4.useState)(0);
   (0, import_react4.useEffect)(() => {
     let live = true, view, plugin, detach;
     initI18n(lang2);
@@ -51349,6 +51349,11 @@ function App4({ api, actions }) {
       setError("");
       const saved = await api.load();
       if (!live) return;
+      const preferred = ["zh", "en"].includes(saved.data.language) ? saved.data.language : hostLanguage === "en" ? "en" : "zh";
+      if (preferred !== lang2) {
+        setLang(preferred);
+        return;
+      }
       plugin = createLearningController(api, saved, (status) => {
         if (status === "saved") actions?.changed?.();
       }, lang2);
@@ -51390,6 +51395,7 @@ function App4({ api, actions }) {
       language.value = lang2;
       language.onchange = async () => {
         const next = language.value;
+        plugin.settings.language = next;
         if (await plugin.saveSettings() === false) {
           language.value = lang2;
           return;
@@ -51405,7 +51411,7 @@ function App4({ api, actions }) {
       if (plugin) closing.current = plugin.dispose();
       root.current?.replaceChildren();
     };
-  }, [api, lang2, epoch, actions]);
+  }, [api, lang2, epoch, actions, hostLanguage]);
   return /* @__PURE__ */ import_react4.default.createElement(import_react4.default.Fragment, null, error && /* @__PURE__ */ import_react4.default.createElement("p", { role: "alert", className: "qpg-dsh-error" }, error), /* @__PURE__ */ import_react4.default.createElement("div", { ref: root, className: "qpg-dsh-view" }));
 }
 
@@ -51420,7 +51426,6 @@ var css = harness_ui_default + "\n" + styles_default;
 var ICON = NAME.includes("ui-learn") ? BookOpen : NAME.includes("cover") ? Palette : NAME.includes("audio") ? AudioLines : FileText;
 var inject = ["slots", "remote", "locale"];
 function apply(ctx) {
-  initI18n(navigator.language.startsWith("zh") ? "zh" : "en");
   let pending = null, runAction = null;
   const homeListeners = /* @__PURE__ */ new Set();
   const actions = {
@@ -51488,8 +51493,10 @@ function apply(ctx) {
     return () => style.remove();
   });
   ctx.effect(
-    () => ctx.locale.register(ID, { zh: { title: TITLE }, en: { title: EN_TITLE } })
+    () => ctx.locale.register(ID, { zh: { title: TITLE, language: "zh" }, en: { title: EN_TITLE, language: "en" } })
   );
+  const hostLanguage = () => ctx.locale.bind(ID)("language");
+  initI18n(hostLanguage() === "zh" ? "zh" : "en");
   const codec = () => ({
     mode: "strict",
     typeSymbol: NAME + "#json",
@@ -51544,7 +51551,7 @@ function apply(ctx) {
       listeners.add(f);
       return () => listeners.delete(f);
     }, []);
-    return /* @__PURE__ */ import_react5.default.createElement("div", { className: "qpg-dsh-surface qpg-dsh-host", "data-plugin": NAME }, api ? /* @__PURE__ */ import_react5.default.createElement(App4, { api, actions }) : /* @__PURE__ */ import_react5.default.createElement("p", { role: "status" }, error || "\u6B63\u5728\u8FDE\u63A5\u672C\u5730\u670D\u52A1 / Connecting\u2026"));
+    return /* @__PURE__ */ import_react5.default.createElement("div", { className: "qpg-dsh-surface qpg-dsh-host", "data-plugin": NAME }, api ? /* @__PURE__ */ import_react5.default.createElement(App4, { api, actions, hostLanguage: hostLanguage() }) : /* @__PURE__ */ import_react5.default.createElement("p", { role: "status" }, error || "\u6B63\u5728\u8FDE\u63A5\u672C\u5730\u670D\u52A1 / Connecting\u2026"));
   }
   ctx.effect(
     () => ctx.slots.inject(
