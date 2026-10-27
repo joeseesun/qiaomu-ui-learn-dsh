@@ -1,0 +1,28 @@
+/* Host tokens and primitives only. Product CSS is copied unchanged from upstream. */
+.qpg-dsh-surface{
+ --text-normal:var(--dsw-alias-label-primary,#262626);--text-muted:var(--dsw-alias-label-secondary,#777);--text-faint:var(--dsw-alias-label-tertiary,#999);
+ --background-primary:var(--dsw-alias-bg-base,#fff);--background-secondary:var(--dsw-alias-bg-layer-1,#f6f6f6);--background-modifier-border:var(--dsw-alias-border-main,#e4e4e4);--background-modifier-hover:var(--dsw-alias-interactive-bg-hover,#f4f4f4);
+ --font-interface:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--font-text:var(--font-interface);--font-monospace:ui-monospace,monospace;
+ color:var(--text-normal);font-family:var(--font-interface);font-size:14px;line-height:1.5;
+}
+.qpg-dsh-host,.qpg-dsh-view{height:100%;min-height:0;overflow:hidden;background:var(--background-primary)}
+.qpg-dsh-surface *{box-sizing:border-box}
+.qpg-dsh-surface input,.qpg-dsh-surface textarea,.qpg-dsh-surface select,.qpg-dsh-surface button{font-family:inherit}
+.qpg-dsh-surface img{max-width:100%}
+.qpg-dsh-row{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.qpg-dsh-language{background:transparent;border:0;color:var(--text-muted);font-size:12px;max-width:60px}
+.qpg-dsh-overlay{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.45);padding:16px}
+.qpg-dsh-overlay .modal{position:relative;max-width:calc(100vw - 32px);max-height:calc(100vh - 32px);background:var(--background-primary);color:var(--text-normal);border-radius:14px;outline:none;box-shadow:0 24px 80px #0003}
+.qpg-dsh-overlay .modal-content{min-height:0;min-width:0}
+.qpg-dsh-overlay .modal-close-button{position:absolute;right:12px;top:12px;z-index:10;display:flex;align-items:center;justify-content:center;width:28px;height:28px;padding:0;color:var(--text-muted);border:0;border-radius:6px;background:transparent;cursor:pointer}
+.qpg-dsh-overlay .modal-close-button:hover{background:var(--background-modifier-hover)}
+.qpg-dsh-toast{position:fixed;z-index:1200;right:24px;bottom:24px;max-width:min(480px,90vw);padding:12px 18px;background:#282828;color:#fff;border-radius:10px;box-shadow:0 4px 24px #0002;font:14px/1.5 -apple-system,sans-serif}
+.qpg-dsh-menu{position:fixed;z-index:1100;min-width:180px;max-width:360px;padding:5px;background:var(--background-primary);border:1px solid var(--background-modifier-border);border-radius:10px;box-shadow:0 8px 32px #0002}
+.qpg-dsh-menu-item{display:flex;width:100%;align-items:center;gap:9px;padding:8px 10px;background:none;border:0;border-radius:6px;color:var(--text-normal);text-align:left;font-size:13px;cursor:pointer}
+.qpg-dsh-menu-item:hover,.qpg-dsh-menu-item:focus{background:var(--background-modifier-hover);outline:none}
+.qpg-dsh-menu-item>span:first-child{width:16px;height:16px;display:flex}.qpg-dsh-menu hr{border:0;border-top:1px solid var(--background-modifier-border);margin:4px}
+.qpg-dsh-surface .setting-item{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid var(--background-modifier-border)}
+.qpg-dsh-surface .setting-item-info{flex:1;min-width:0}.qpg-dsh-surface .setting-item-name{font-size:14px;font-weight:500}.qpg-dsh-surface .setting-item-description{font-size:12px;color:var(--text-muted);margin-top:4px}.qpg-dsh-surface .setting-item-control{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end;max-width:55%}
+.qpg-dsh-surface .setting-item-control :is(input,select,button){border:1px solid var(--background-modifier-border);border-radius:6px;background:var(--background-primary);color:var(--text-normal);padding:6px 10px;max-width:100%;font-size:13px}.qpg-dsh-surface .setting-item-control button{cursor:pointer;display:flex;align-items:center;gap:6px}.qpg-dsh-surface .setting-item-control input[type=checkbox]{width:18px;height:18px;accent-color:var(--text-normal)}
+.qpg-dsh-files{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}.qpg-dsh-surface .qpg-dsh-editor{min-height:300px}.qpg-dsh-error{padding:12px;color:#b91c1c}
+@media(max-width:760px){.qpg-dsh-row{gap:3px}.qpg-dsh-language{max-width:48px}.qpg-dsh-surface .setting-item{align-items:flex-start;flex-direction:column}.qpg-dsh-surface .setting-item-control{max-width:100%}}
