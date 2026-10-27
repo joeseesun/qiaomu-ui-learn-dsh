@@ -17,7 +17,7 @@ const ICON = NAME.includes("ui-learn")
       : FileText;
 export const inject = ["slots", "remote", "locale"];
 export function apply(ctx) {
-  initI18n(navigator.language.startsWith("zh")?"zh":"en");
+
   let pending = null, runAction = null;
   const homeListeners=new Set();
   const actions = {
@@ -55,8 +55,10 @@ export function apply(ctx) {
     return () => style.remove();
   });
   ctx.effect(() =>
-    ctx.locale.register(ID, { zh: { title: TITLE }, en: { title: EN_TITLE } }),
+    ctx.locale.register(ID, { zh: { title: TITLE, language:"zh" }, en: { title: EN_TITLE, language:"en" } }),
   );
+  const hostLanguage=()=>ctx.locale.bind(ID)("language");
+  initI18n(hostLanguage()==="zh"?"zh":"en");
   const codec = () => ({
     mode: "strict",
     typeSymbol: NAME + "#json",
@@ -119,7 +121,7 @@ export function apply(ctx) {
     return (
       <div className="qpg-dsh-surface qpg-dsh-host" data-plugin={NAME}>
         {api ? (
-          <App api={api} actions={actions} />
+          <App api={api} actions={actions} hostLanguage={hostLanguage()} />
         ) : (
           <p role="status">{error || "正在连接本地服务 / Connecting…"}</p>
         )}
