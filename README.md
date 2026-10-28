@@ -1,5 +1,7 @@
 # 乔木 UI 学习 · DeepSeek Harness
 
+> v0.1.2：DeepSeek Harness **0.2.1-rc.3** 兼容更新。[本次验证范围](docs/RC3-COMPATIBILITY.md)。
+
 在 DeepSeek Harness 里浏览设计参考、学习 UI 词汇、练习审美，并把自己的点评保存成 Markdown。
 
 直接沿用 [Obsidian 版乔木 UI 学习](https://github.com/joeseesun/qiaomu-ui-learn) 的图库、词典、风格、测验、详情、收藏夹和设置界面，产品 CSS 保持一致。迁移仅替换宿主容器、文件保存、快捷操作和 Home 联动接口。
@@ -21,12 +23,12 @@
 
 ## 安装
 
-要求 DeepSeek Harness **0.2.1-rc.3**（兼容声明 `>=0.2.1-rc.3 <0.3.0`）。从 [Releases](https://github.com/joeseesun/qiaomu-ui-learn-dsh/releases) 下载 `.tgz` 和 `SHA256SUMS`，核对摘要后，在 Harness 插件管理中安装本地 bundle。按宿主提示重载，然后从侧边栏打开「乔木 UI 学习」。
+要求 DeepSeek Harness **0.2.1-rc.3**。从 [Releases](https://github.com/joeseesun/qiaomu-ui-learn-dsh/releases) 下载 `.tgz` 和 `SHA256SUMS`，核对摘要后，在 Harness 插件管理中安装本地 bundle。按宿主提示重载，然后从侧边栏打开「乔木 UI 学习」。
 
 也可使用 Harness 自带 CLI 安装到指定 profile：
 
 ```sh
-dsh plugin --profile YOUR_PROFILE add /absolute/path/qiaomu-ui-learn-dsh-0.1.0.tgz
+dsh plugin --profile YOUR_PROFILE add /absolute/path/qiaomu-ui-learn-dsh-0.1.2.tgz
 ```
 
 `YOUR_PROFILE` 替换为自己的 profile。macOS App 自带 CLI 位于 `/Applications/DeepSeek Harness.app/Contents/Resources/runtime/cli/bin/dsh`。本项目交付预构建 GitHub Release 包，不需要 npm 账号或 Obsidian。

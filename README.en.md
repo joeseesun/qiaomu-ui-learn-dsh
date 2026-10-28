@@ -1,5 +1,7 @@
 # Qiaomu UI Learn for DeepSeek Harness
 
+> v0.1.2: DeepSeek Harness **0.2.1-rc.3** compatibility update. [Release verification](docs/RC3-COMPATIBILITY.md).
+
 Browse 13,561 design references, learn UI vocabulary through 106 interactive specimens, practice recognition quizzes, and keep your reviews as Markdown notes.
 
 This port directly retains the [original Obsidian plugin](https://github.com/joeseesun/qiaomu-ui-learn) interfaces and product stylesheet. Only host containers, persistence, file access, shortcuts and Home integration are adapted.
@@ -10,10 +12,10 @@ Includes collections, recent designs, ratings/tags/comments, bilingual dictionar
 
 ## Install
 
-Requires DeepSeek Harness 0.2.1-rc.3 (`>=0.2.1-rc.3 <0.3.0`). Download the prebuilt `.tgz` and `SHA256SUMS` from [Releases](https://github.com/joeseesun/qiaomu-ui-learn-dsh/releases). Verify the checksum, install the local bundle in Harness plugin management, and reload as prompted. Open **乔木 UI 学习** from the sidebar.
+Requires DeepSeek Harness 0.2.1-rc.3 (`0.2.1-rc.3`). Download the prebuilt `.tgz` and `SHA256SUMS` from [Releases](https://github.com/joeseesun/qiaomu-ui-learn-dsh/releases). Verify the checksum, install the local bundle in Harness plugin management, and reload as prompted. Open **乔木 UI 学习** from the sidebar.
 
 ```sh
-dsh plugin --profile YOUR_PROFILE add /absolute/path/qiaomu-ui-learn-dsh-0.1.0.tgz
+dsh plugin --profile YOUR_PROFILE add /absolute/path/qiaomu-ui-learn-dsh-0.1.2.tgz
 ```
 
 Replace the profile and path with your own. No npm account or Obsidian installation is required. Home integration requires the `qiaomuHome` v1 service; the old Home 0.2.1 release does not yet provide it. This plugin also works independently.

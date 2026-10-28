@@ -867,6 +867,87 @@ function createHomeProvider({ load, open, subscribe }) {
   };
 }
 
+// package.json
+var package_default = {
+  name: "qiaomu-ui-learn-dsh",
+  version: "0.1.2",
+  private: true,
+  type: "module",
+  description: "Qiaomu UI Learn for DeepSeek Harness",
+  license: "MIT",
+  engines: {
+    node: ">=22",
+    dsh: "0.2.1-rc.3"
+  },
+  exports: {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  icon: "./icon.svg",
+  files: [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "icon.svg",
+    "locale",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  scripts: {
+    build: "node scripts/build.mjs",
+    test: "node --import tsx --test tests/*.test.mjs",
+    check: "npm test && npm run build && node scripts/check-package.mjs",
+    prepack: "npm run build && node scripts/check-package.mjs"
+  },
+  devDependencies: {
+    esbuild: "0.28.1",
+    jsdom: "^29.1.1",
+    lucide: "^1.47.0",
+    "lucide-react": "1.47.0",
+    react: "18.3.1",
+    "react-dom": "18.3.1",
+    tsx: "4.20.6"
+  },
+  peerDependencies: {
+    "@deepseek-ai/cordis": "~4.0.5",
+    "@deepseek-ai/dsh-typert-protocol": "0.2.1-rc.3"
+  },
+  peerDependenciesMeta: {
+    "@deepseek-ai/cordis": {
+      optional: true
+    },
+    "@deepseek-ai/dsh-typert-protocol": {
+      optional: true
+    }
+  },
+  repository: {
+    type: "git",
+    url: "https://github.com/joeseesun/qiaomu-ui-learn-dsh.git"
+  },
+  keywords: [
+    "dsh-plugin",
+    "deepseek-harness",
+    "qiaomu",
+    "ui-learn"
+  ],
+  dsh: {
+    bundle: {
+      patch: "./cordis.patch.yml"
+    },
+    client: {
+      platform: "web",
+      immediately: true,
+      inject: []
+    },
+    meta: {
+      title: "\u4E54\u6728 UI \u5B66\u4E60",
+      description: "Qiaomu UI Learn for DeepSeek Harness"
+    }
+  }
+};
+
 // src/native-app.jsx
 var import_react4 = __toESM(require("react"), 1);
 
@@ -51127,7 +51208,7 @@ function createLearningController(api, saved, onStatus = () => {
   const controller = {
     api,
     settings: normalizeState(saved.data, all),
-    manifest: { id: "qiaomu-ui-learn-dsh", name: "Qiaomu UI Learn", version: "0.1.1", author: "\u5411\u9633\u4E54\u6728" },
+    manifest: { id: "qiaomu-ui-learn-dsh", name: "Qiaomu UI Learn", version: package_default.version, author: "\u5411\u9633\u4E54\u6728" },
     app: {},
     catalog: catalog_default,
     flatItems: flat,

@@ -1,3 +1,4 @@
+import packageInfo from '../package.json' with { type: 'json' };
 import React,{useEffect,useRef,useState} from 'react';
 import catalog from '../data/catalog.json';
 import learn from '../data/learnui.json';
@@ -16,7 +17,7 @@ const lookup=new Map(flat.map(i=>[i.key,i]));
 const fitScript=`<script>function fit(){var f=document.querySelector('.fragment'),d=f&&f.firstElementChild;if(!d)return;f.style.transform='';var r=d.getBoundingClientRect(),w=Math.max(r.width,d.scrollWidth),h=Math.max(r.height,d.scrollHeight);if(!w||!h)return;var s=Math.min(1,(innerWidth-24)/w,(innerHeight-24)/h);if(s<.995){f.style.transformOrigin='center center';f.style.transform='scale('+s+')'}}addEventListener('load',function(){setTimeout(fit,50);setTimeout(fit,500)});addEventListener('resize',fit);</script>`;
 export function demoHtml(kind,slug,fit=false){const file=(kind==='style'?'style-':'')+slug+'.html';if(!demos[file])throw Error('Missing specimen '+file);return `<!doctype html><html><head><meta charset="utf-8"><style>${demos['site.css']}html,body{height:100%;margin:0;background:${fit?'transparent':'#f6f6f3 radial-gradient(rgba(20,20,20,.09) 1px,transparent 1px) 0 0/14px 14px'} !important}.stage{height:100%;border:0;border-radius:0;background:transparent}.stage-center{padding:16px}</style></head><body><div class="stage"><div class="stage-center"><div class="fragment">${demos[file]}</div></div></div>${fit?fitScript:''}</body></html>`;}
 export function createLearningController(api,saved,onStatus=()=>{},locale='zh') {
- const queue=new SaveQueue(api,saved.revision,()=>onStatus('saved'));const controller={api,settings:normalizeState(saved.data,all),manifest:{id:'qiaomu-ui-learn-dsh',name:'Qiaomu UI Learn',version:'0.1.1',author:'向阳乔木'},app:{},catalog,flatItems:flat,learnui:learn,catalogError:false,learnuiError:false,onCatalogReady:[],onLearnuiReady:[],locale,
+ const queue=new SaveQueue(api,saved.revision,()=>onStatus('saved'));const controller={api,settings:normalizeState(saved.data,all),manifest:{id:'qiaomu-ui-learn-dsh',name:'Qiaomu UI Learn',version:packageInfo.version,author:'向阳乔木'},app:{},catalog,flatItems:flat,learnui:learn,catalogError:false,learnuiError:false,onCatalogReady:[],onLearnuiReady:[],locale,
   saveSettings(){queue.push(structuredClone(controller.settings));onStatus('saving');return queue.flush().catch(e=>{onStatus(e.message);new Notice(e.message);return false;});},
   rememberRecent(item){controller.settings.recents=[item.key,...controller.settings.recents.filter(k=>k!==item.key)].slice(0,24);void controller.saveSettings();},
   itemsByKeys(keys){return keys.map(k=>lookup.get(k)).filter(Boolean);},recentItems(){return controller.itemsByKeys(controller.settings.recents);},

@@ -1,13 +1,13 @@
 {
   "name": "qiaomu-ui-learn-dsh",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "type": "module",
   "description": "Qiaomu UI Learn for DeepSeek Harness",
   "license": "MIT",
   "engines": {
     "node": ">=22",
-    "dsh": ">=0.2.1-rc.3 <0.3.0"
+    "dsh": "0.2.1-rc.3"
   },
   "exports": {
     ".": "./index.js",
@@ -42,7 +42,7 @@
   },
   "peerDependencies": {
     "@deepseek-ai/cordis": "~4.0.5",
-    "@deepseek-ai/dsh-typert-protocol": "0.2.1-rc.2"
+    "@deepseek-ai/dsh-typert-protocol": "0.2.1-rc.3"
   },
   "peerDependenciesMeta": {
     "@deepseek-ai/cordis": {
