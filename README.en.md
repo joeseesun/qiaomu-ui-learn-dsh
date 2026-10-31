@@ -39,3 +39,5 @@ npm pack
 MIT plugin code; upstream content attribution and dependency licenses are retained in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 [中文](README.md)
+
+See the [Harness rc.5 compatibility record](docs/RC5-COMPATIBILITY.md) for tested paths and limitations.

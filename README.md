@@ -56,3 +56,5 @@ npm pack
 插件 MIT；保留原仓库源码、作者署名和数据归属。设计目录及缩略图来自 Kombai Gallery；UI 学习内容通过 joeseesun/learnui 整理，原英文内容来自 namethatui.com。详见 [第三方声明](THIRD_PARTY_NOTICES.md)。
 
 [English](README.en.md) · [源项目](https://github.com/joeseesun/qiaomu-ui-learn)
+
+本次 Harness rc.5 支持范围与实测边界见 [兼容验证记录](docs/RC5-COMPATIBILITY.md)。

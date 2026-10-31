@@ -16,7 +16,9 @@ Add explicit rc.4/rc.5 support to the existing host/peer ranges and synchronize 
 
 - `npm ci`、项目 `npm run check` 及 `npm pack --json` 通过。
 - 固定 dsh-plugin-health 0.5.0 检查 9 个插件 × rc.3/rc.4/rc.5：27 项声明判断通过，无豁免。声明判断不代替运行验证。
-- 运行验证与发布状态见本轮验收记录；未通过真实宿主验收前不声明完成。
+- 官方 rc.5 CLI 正常安装预构建 tgz，无版本豁免；全新 Web profile 启动，九包逐文件摘要与候选一致。
+- 本轮实际操作：实际打开灵感图库、UI 词典和“文本乱序”词条详情及交互标本。未复测全部词条、导出与复习。
+- 本轮维护更新只涉及兼容声明、版本显示与文档，不改变持久化格式。以上是指定核心路径的回归，不代表所有功能端到端验收。
 
 ## 边界与恢复
 
