@@ -1,6 +1,6 @@
 # Qiaomu UI Learn for DeepSeek Harness
 
-> v0.1.4: DeepSeek Harness **0.2.1-rc.3** compatibility update. [Release verification](docs/RC3-COMPATIBILITY.md).
+> v0.1.4: DeepSeek Harness **0.2.2-rc.1** compatibility update. [Release verification](docs/DSH-0.2.2-RC1.md).
 
 Browse 13,561 design references, learn UI vocabulary through 106 interactive specimens, practice recognition quizzes, and keep your reviews as Markdown notes.
 
@@ -12,7 +12,7 @@ Includes collections, recent designs, ratings/tags/comments, bilingual dictionar
 
 ## Install
 
-Requires DeepSeek Harness 0.2.1-rc.3 (`0.2.1-rc.3`). Download the prebuilt `.tgz` and `SHA256SUMS` from [Releases](https://github.com/joeseesun/qiaomu-ui-learn-dsh/releases). Verify the checksum, install the local bundle in Harness plugin management, and reload as prompted. Open **乔木 UI 学习** from the sidebar.
+Requires DeepSeek Harness 0.2.2-rc.1. Download the prebuilt `.tgz` and `SHA256SUMS` from [Releases](https://github.com/joeseesun/qiaomu-ui-learn-dsh/releases). Verify the checksum, install the local bundle in Harness plugin management, and reload as prompted. Open **乔木 UI 学习** from the sidebar.
 
 ```sh
 dsh plugin --profile YOUR_PROFILE add /absolute/path/qiaomu-ui-learn-dsh-0.1.4.tgz
@@ -40,6 +40,4 @@ MIT plugin code; upstream content attribution and dependency licenses are retain
 
 [中文](README.md)
 
-See the [Harness rc.5 compatibility record](docs/RC5-COMPATIBILITY.md) for tested paths and limitations.
-
-Harness 0.2.2-rc.1 compatibility: [validation and supported scope](docs/DSH-0.2.2-RC1.md).
+See the [Harness 0.2.2-rc.1 compatibility record](docs/DSH-0.2.2-RC1.md) for tested paths and limitations.
