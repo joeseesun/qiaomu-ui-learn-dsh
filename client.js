@@ -870,14 +870,14 @@ function createHomeProvider({ load, open, subscribe }) {
 // package.json
 var package_default = {
   name: "qiaomu-ui-learn-dsh",
-  version: "0.1.5",
+  version: "0.1.6",
   private: true,
   type: "module",
   description: "Qiaomu UI Learn for DeepSeek Harness",
   license: "MIT",
   engines: {
     node: ">=22",
-    dsh: "0.2.1-rc.3 || 0.2.1-rc.4 || 0.2.1-rc.5 || 0.2.2-rc.1 || 0.2.2-rc.2"
+    dsh: "0.2.1-rc.3 || 0.2.1-rc.4 || 0.2.1-rc.5 || 0.2.2-rc.1 || 0.2.2-rc.2 || 0.2.2-rc.3"
   },
   exports: {
     ".": "./index.js",
@@ -912,7 +912,7 @@ var package_default = {
   },
   peerDependencies: {
     "@deepseek-ai/cordis": "~4.0.5 || 4.1.0",
-    "@deepseek-ai/dsh-typert-protocol": "0.2.1-rc.3 || 0.2.1-rc.4 || 0.2.1-rc.5 || 0.2.2-rc.1 || 0.2.2-rc.2"
+    "@deepseek-ai/dsh-typert-protocol": "0.2.1-rc.3 || 0.2.1-rc.4 || 0.2.1-rc.5 || 0.2.2-rc.1 || 0.2.2-rc.2 || 0.2.2-rc.3"
   },
   peerDependenciesMeta: {
     "@deepseek-ai/cordis": {
